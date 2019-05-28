@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
 import Section from '../components/Section';
 import Triangle from '../components/Triangle';
+import SkillsProgress from '../components/SkillsProgress';
 import markdownRenderer from '../components/MarkdownRenderer';
 
 const Background = () => (

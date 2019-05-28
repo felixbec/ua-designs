@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Heading, Flex, Box, Text } from 'rebass';
+import styled from 'styled-components';
 import TextLoop from 'react-text-loop';
 import { SectionLink } from 'react-scroll-section';
 import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
 import MouseIcon from '../components/MouseIcon';
 import Triangle from '../components/Triangle';
+import HeaderImg from '../../media/headerBanner.jpeg';
 
 const Background = () => (
   <div>
@@ -38,9 +40,14 @@ const Background = () => (
     />
   </div>
 );
+const BackgroundImg = () => (
+  <div>
+    <img src={HeaderImg} />
+  </div>
+);
 
 const LandingPage = () => (
-  <Section.Container id="home" Background={Background}>
+  <Section.Container className="container" id="home" Background={Background}>
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
@@ -86,7 +93,6 @@ const LandingPage = () => (
                 ))}
               </TextLoop>
             </Heading>
-
             <Flex alignItems="center" justifyContent="center" flexWrap="wrap">
               {socialLinks.map(({ id, ...rest }) => (
                 <Box mx={3} fontSize={[5, 6, 6]} key={id}>
