@@ -114,7 +114,7 @@ const Project = ({
 }) => (
   <Card p={0}>
     <Flex style={{ height: CARD_HEIGHT }}>
-      <TextContainer>
+      {/*<TextContainer>
         <span>
           <Title my={2} pb={1}>
             {name}
@@ -123,7 +123,7 @@ const Project = ({
         <Text width={[1]} style={{ overflow: 'auto' }}>
           {description}
         </Text>
-      </TextContainer>
+      </TextContainer>*/}
 
       <ImageContainer>
         <ProjectImage src={logo.image.src} alt={logo.title} />
@@ -148,7 +148,7 @@ const Project = ({
               />
             </Box>
           </Flex>
-          <ImageSubtitle
+          {/*<ImageSubtitle
             bg="primaryLight"
             color="white"
             y="bottom"
@@ -159,7 +159,7 @@ const Project = ({
           </ImageSubtitle>
           <Hide query={MEDIA_QUERY_SMALL}>
             <ImageSubtitle bg="backgroundDark">{publishedDate}</ImageSubtitle>
-          </Hide>
+          </Hide>*/}
         </ProjectTag>
       </ImageContainer>
     </Flex>

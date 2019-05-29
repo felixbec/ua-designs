@@ -4,14 +4,44 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
-import Section from '../components/Section';
 import { ProgressBar } from 'react-bootstrap';
+import Triangle from '../components/Triangle';
 import SkillsProgress from '../components/SkillsProgress';
 import markdownRenderer from '../components/MarkdownRenderer';
+import SectionFluid from '../components/SectionFluid';
+import Section from '../components/Section';
+
+const Title = {
+  marginRight: '45px',
+};
+
+const Background = () => (
+  <div>
+    <Triangle
+      color="secondaryLight"
+      height={['50vh', '20vh']}
+      width={['50vw', '50vw']}
+      invertY
+    />
+
+    <Triangle
+      color="primaryDark"
+      height={['20vh', '40vh']}
+      width={['75vw', '70vw']}
+      invertX
+    />
+
+    <Triangle
+      color="backgroundDark"
+      height={['25vh', '20vh']}
+      width={['100vw', '100vw']}
+    />
+  </div>
+);
 
 const Skills = () => (
-  <Section.Container id="skills">
-    <Section.Header name="Skills" icon="🛠" label="tools" />
+  <SectionFluid.Container id="skills" Background={Background}>
+    <SectionFluid.Header name="Skills" icon="🛠" label="tools" />
     {/*
     <StaticQuery
       query={graphql`
@@ -45,8 +75,10 @@ const Skills = () => (
         );
       }}
     />*/}
-    <SkillsProgress />
-  </Section.Container>
+    <Fade right>
+      <SkillsProgress />
+    </Fade>
+  </SectionFluid.Container>
 );
 
 export default Skills;
