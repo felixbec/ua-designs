@@ -44,7 +44,7 @@ const Background = () => (
   </div>
 );
 
-const CARD_HEIGHT = '200px';
+const CARD_HEIGHT = '400px';
 
 const MEDIA_QUERY_SMALL = '@media (max-width: 400px)';
 
@@ -80,7 +80,20 @@ const ImageContainer = styled.div`
 const ProjectImage = styled(Image)`
   width: ${CARD_HEIGHT};
   height: ${CARD_HEIGHT};
-  padding: 40px;
+  /*padding: 40px;*/
+  margin-top: 0px;
+
+  ${MEDIA_QUERY_SMALL} {
+    height: calc(${CARD_HEIGHT} / 2);
+    width: calc(${CARD_HEIGHT} / 2);
+    margin-top: calc(${CARD_HEIGHT} / 4);
+    padding: 10px;
+  }
+`;
+const ProjectOverlay = styled.div`
+  width: ${CARD_HEIGHT};
+  height: ${CARD_HEIGHT};
+  /*padding: 40px;*/
   margin-top: 0px;
 
   ${MEDIA_QUERY_SMALL} {
