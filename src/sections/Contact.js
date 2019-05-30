@@ -14,10 +14,6 @@ import '../styles/contact.css';
 import mailIcon from '../../media/contactLogo@1x.png';
 import Tilt from 'react-tilt';
 
-const ContactBackground = styled.div`
-  background-color: #03dac8;
-`;
-
 const Background = () => (
   <div>
     <Triangle color="primary" height={['100vh']} width={['100vw']} invertY />
@@ -64,71 +60,83 @@ const Contact = () => (
     <div class="bg-contact100">
       <div class="container-contact100">
         <div class="wrap-contact100">
-          <Tilt
-            className="Tilt"
-            options={{ max: 50 }}
-            style={{ height: 310, width: 322 }}
-          >
-            <div class="contact100-pic js-tilt" data-tilt>
-              <img src={mailIcon} alt="IMG" />
-            </div>
-          </Tilt>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 tilt-container">
+                <Tilt
+                  className="Tilt"
+                  options={{ max: 50 }}
+                  style={{ height: 310, width: 322, margin: 'auto' }}
+                >
+                  <div class="contact100-pic js-tilt" data-tilt>
+                    <img src={mailIcon} alt="IMG" />
+                  </div>
+                </Tilt>
+              </div>
 
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            class="contact100-form validate-form"
-          >
-            <input type="hidden" name="bot-field" />
-            <input type="hidden" name="form-name" value="contact" />
-            <span class="contact100-form-title">Get in touch</span>
+              <div class="col-lg-6 form-container">
+                <form
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  class="contact100-form validate-form"
+                >
+                  <input type="hidden" name="bot-field" />
+                  <input type="hidden" name="form-name" value="contact" />
+                  <span class="contact100-form-title">Get in touch</span>
 
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Name is required"
-            >
-              <input
-                class="input100"
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-              <span class="focus-input100" />
-              <span class="symbol-input100">
-                <i class="fa fa-user" aria-hidden="true" />
-              </span>
-            </div>
+                  <div
+                    class="wrap-input100 validate-input"
+                    data-validate="Name is required"
+                  >
+                    <input
+                      class="input100"
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                    />
+                    <span class="focus-input100" />
+                    <span class="symbol-input100">
+                      <i class="fa fa-user" aria-hidden="true" />
+                    </span>
+                  </div>
 
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Valid email is required: ex@abc.xyz"
-            >
-              <input
-                class="input100"
-                type="text"
-                name="email"
-                placeholder="Email"
-              />
-              <span class="focus-input100" />
-              <span class="symbol-input100">
-                <i class="fa fa-envelope" aria-hidden="true" />
-              </span>
-            </div>
+                  <div
+                    class="wrap-input100 validate-input"
+                    data-validate="Valid email is required: ex@abc.xyz"
+                  >
+                    <input
+                      class="input100"
+                      type="text"
+                      name="email"
+                      placeholder="Email"
+                    />
+                    <span class="focus-input100" />
+                    <span class="symbol-input100">
+                      <i class="fa fa-envelope" aria-hidden="true" />
+                    </span>
+                  </div>
 
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Message is required"
-            >
-              <textarea class="input100" name="message" placeholder="Message" />
-              <span class="focus-input100" />
-            </div>
+                  <div
+                    class="wrap-input100 validate-input"
+                    data-validate="Message is required"
+                  >
+                    <textarea
+                      class="input100"
+                      name="message"
+                      placeholder="Message"
+                    />
+                    <span class="focus-input100" />
+                  </div>
 
-            <div class="container-contact100-form-btn">
-              <button class="contact100-form-btn">Send</button>
+                  <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn">Send</button>
+                  </div>
+                </form>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
