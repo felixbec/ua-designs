@@ -7,6 +7,7 @@ import Projects from '../sections/Projects';
 import Writing from '../sections/Writing';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Contact from '../sections/Contact';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const IndexPage = () => (
@@ -17,6 +18,7 @@ const IndexPage = () => (
     <Skills />
     <Projects />
     <Writing />
+    <Contact />
     <Footer />
   </Layout>
 );
