@@ -10,35 +10,25 @@ import SkillsProgress from '../components/SkillsProgress';
 import markdownRenderer from '../components/MarkdownRenderer';
 import SectionFluid from '../components/SectionFluid';
 import Section from '../components/Section';
+import '../styles/contact.css';
+import mailIcon from '../../media/contactLogo@1x.png';
+import Tilt from 'react-tilt';
+
+const ContactBackground = styled.div`
+  background-color: #03dac8;
+`;
 
 const Background = () => (
   <div>
-    <Triangle
-      color="secondaryLight"
-      height={['50vh', '20vh']}
-      width={['50vw', '50vw']}
-      invertY
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['20vh', '40vh']}
-      width={['75vw', '70vw']}
-      invertX
-    />
-
-    <Triangle
-      color="backgroundDark"
-      height={['25vh', '20vh']}
-      width={['100vw', '100vw']}
-    />
+    <Triangle color="primary" height={['100vh']} width={['100vw']} invertY />
+    <Triangle color="primary" height={['100vh']} width={['100vw']} invertX />
   </div>
 );
 
-const Skills = () => (
-  <SectionFluid.Container id="skills" Background={Background}>
-    <SectionFluid.Header name="Skills" icon="🛠" label="tools" />
-    {/*
+const Contact = () => (
+  <Section.Container id="contact" Background={Background}>
+    {/*<Section.Header name="Contact" icon="📩" label="tools" />
+    
     <StaticQuery
       query={graphql`
         query SkillsQuery {
@@ -71,10 +61,76 @@ const Skills = () => (
         );
       }}
     />*/}
-    <Fade right>
-      <SkillsProgress />
-    </Fade>
-  </SectionFluid.Container>
+    <div class="bg-contact100">
+      <div class="container-contact100">
+        <div class="wrap-contact100">
+          <Tilt
+            className="Tilt"
+            options={{ max: 50 }}
+            style={{ height: 310, width: 322 }}
+          >
+            <div class="contact100-pic js-tilt" data-tilt>
+              <img src={mailIcon} alt="IMG" />
+            </div>
+          </Tilt>
+
+          <form
+            name="contact"
+            method="post"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            class="contact100-form validate-form"
+          >
+            <span class="contact100-form-title">Get in touch</span>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Name is required"
+            >
+              <input
+                class="input100"
+                type="text"
+                name="name"
+                placeholder="Name"
+              />
+              <span class="focus-input100" />
+              <span class="symbol-input100">
+                <i class="fa fa-user" aria-hidden="true" />
+              </span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Valid email is required: ex@abc.xyz"
+            >
+              <input
+                class="input100"
+                type="text"
+                name="email"
+                placeholder="Email"
+              />
+              <span class="focus-input100" />
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true" />
+              </span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Message is required"
+            >
+              <textarea class="input100" name="message" placeholder="Message" />
+              <span class="focus-input100" />
+            </div>
+
+            <div class="container-contact100-form-btn">
+              <button class="contact100-form-btn">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </Section.Container>
 );
 
-export default Skills;
+export default Contact;
