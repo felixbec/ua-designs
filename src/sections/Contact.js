@@ -76,9 +76,8 @@ const Contact = () => (
 
           <form
             name="contact"
-            method="post"
+            method="POST"
             data-netlify="true"
-            data-netlify-honeypot="bot-field"
             class="contact100-form validate-form"
           >
             <span class="contact100-form-title">Get in touch</span>
