@@ -14,19 +14,23 @@ const IconLink = styled(Link)`
   }
 `;
 
-const SocialLink = ({ fontAwesomeIcon, name, url, username }) => (
-  <Tooltip title={name} position="bottom" trigger="mouseenter">
-    <IconLink href={url} target="_blank">
-      <FontAwesome name={fontAwesomeIcon} />
-    </IconLink>
-  </Tooltip>
+const UsernameTag = styled.span`
+  font-size: 24px;
+  margin-left: 15px;
+`;
+
+const FooterLink = ({ fontAwesomeIcon, name, url, username }) => (
+  <IconLink href={url} target="_blank">
+    <FontAwesome style={{ verticalAlign: 'middle' }} name={fontAwesomeIcon} />
+    <UsernameTag>{username}</UsernameTag>
+  </IconLink>
 );
 
-SocialLink.propTypes = {
+FooterLink.propTypes = {
   fontAwesomeIcon: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
 };
 
-export default SocialLink;
+export default FooterLink;
