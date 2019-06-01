@@ -40,20 +40,23 @@ const Background = () => (
     />
   </div>
 );
-const BackgroundImg = () => (
-  <div>
-    <img src={HeaderImg} />
-  </div>
-);
+const BackgroundImg = () => <img src={HeaderImg} style={Styles.headerImg} />;
+
+const Styles = {
+  headerImg: {
+    height: '100vh',
+  },
+};
 
 const LandingPage = () => (
-  <Section.Container className="container" id="home" Background={Background}>
+  <Section.Container className="container" id="home">
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
           contentfulAbout {
             name
             roles
+            jobRoles
             socialLinks {
               id
               url
@@ -64,7 +67,7 @@ const LandingPage = () => (
         }
       `}
       render={data => {
-        const { name, socialLinks, roles } = data.contentfulAbout;
+        const { name, jobRoles, socialLinks, roles } = data.contentfulAbout;
 
         return (
           <Fragment>
@@ -75,7 +78,14 @@ const LandingPage = () => (
               fontSize={[5, 6, 8]}
               mb={[3, 4, 5]}
             >
-              {`Hello, I'm ${name}!`}
+              {`Hello, I am ${name} the`}
+              <TextLoop interval={1000}>
+                {jobRoles.map(text => (
+                  <Text width={[300, 500]} key={text}>
+                    {text}
+                  </Text>
+                ))}
+              </TextLoop>
             </Heading>
 
             <Heading

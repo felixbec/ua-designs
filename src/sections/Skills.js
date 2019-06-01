@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Flex } from 'rebass';
+import { Box, Image, Flex, Text } from 'rebass';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
@@ -38,27 +38,31 @@ const Background = () => (
 const Skills = () => (
   <SectionFluid.Container id="skills" Background={Background}>
     <SectionFluid.Header name="Skills" icon="🛠" label="tools" />
-    {/*
+
     <StaticQuery
       query={graphql`
         query SkillsQuery {
-          allContentfulSkills {
-            nodes {
-              skillTitle
-              skillPercentage
-            }
+          contentfulSkills {
+            skillPercentage
+            skill
           }
         }
       `}
       render={data => {
-        const { skillTitle, skillPercentage } = data.allContentfulSkills.nodes;
+        const { skill, skillPercentage } = data.contentfulSkills;
         return (
           <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
             <Box width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
               <Fade bottom>
                 <div>
-                  <p>{skillTitle}</p>
-                  <ProgressBar animated now={skillPercentage} />
+                  {skill.map(text => (
+                    <Text width={[300, 500]} key={text}>
+                      {text}
+                    </Text>
+                  ))}
+                  {skillPercentage.map(text => (
+                    <ProgressBar animated now={text} />
+                  ))}
                 </div>
               </Fade>
             </Box>
@@ -70,7 +74,7 @@ const Skills = () => (
           </Flex>
         );
       }}
-    />*/}
+    />
     <Fade right>
       <SkillsProgress />
     </Fade>
