@@ -39,30 +39,31 @@ const Skills = () => (
   <SectionFluid.Container id="skills" Background={Background}>
     <SectionFluid.Header name="Skills" icon="🛠" label="tools" />
 
-    <StaticQuery
+    {/*<StaticQuery
       query={graphql`
         query SkillsQuery {
-          contentfulSkills {
-            skillPercentage
-            skill
+          contentfulAbout {
+            skills {
+              progressSkillName
+              skillPercentage
+            }
           }
         }
       `}
       render={data => {
-        const { skill, skillPercentage } = data.contentfulSkills;
+        const { skills } = data.contentfulAbout;
         return (
           <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
             <Box width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
               <Fade bottom>
                 <div>
-                  {skill.map(text => (
-                    <Text width={[300, 500]} key={text}>
-                      {text}
+                  {skills.map((progressSkillName, skillPercentage, index) => (
+                    <Text width={[300, 500]} key={index}>
+                      {progressSkillName}
+                      <ProgressBar animated now={5} />
                     </Text>
                   ))}
-                  {skillPercentage.map(text => (
-                    <ProgressBar animated now={text} />
-                  ))}
+                  <ProgressBar animated now={skills.skillPercentage} />
                 </div>
               </Fade>
             </Box>
@@ -74,7 +75,7 @@ const Skills = () => (
           </Flex>
         );
       }}
-    />
+    />*/}
     <Fade right>
       <SkillsProgress />
     </Fade>
