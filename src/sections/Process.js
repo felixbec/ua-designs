@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Box, Image, Flex, Text } from 'rebass';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -6,7 +7,6 @@ import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
 import { ProgressBar } from 'react-bootstrap';
 import Triangle from '../components/Triangle';
-import SkillsProgress from '../components/SkillsProgress';
 import markdownRenderer from '../components/MarkdownRenderer';
 import Section from '../components/Section';
 import icon from '../../media/ss.png';
@@ -21,7 +21,6 @@ const ProcessIconContainer = styled.div`
   width: 140px;
   height: 140px;
   margin: 0 auto;
-
   color: ${props => props.theme.colors.background};
   background-color: ${props => props.theme.colors.secondary};
   border-radius: 50%;
@@ -70,110 +69,88 @@ const Card = styled.div`
   }
 `;
 
-const Process = () => (
+const Process = ({ cardTitle, cardDescription, cardImage, cardIndex }) => (
+  <div className="col-lg-3 col-md-6">
+    <Card class="card">
+      <a href="#discuss">
+        <ProcessIconContainer>
+          <ProcessIconIndex className="index">{cardIndex}</ProcessIconIndex>
+          <ProcessIcon
+            className="header-img3"
+            src={cardImage.file.url}
+            alt="lil"
+          />
+        </ProcessIconContainer>
+      </a>
+      <div class="card-body #discuss">
+        <h5 class="card-title">{cardTitle}</h5>
+        <p class="card-text">{cardDescription}</p>
+      </div>
+    </Card>
+  </div>
+);
+
+Process.propTypes = {
+  cardIndex: PropTypes.string.isRequired,
+  cardTitle: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardImage: PropTypes.shape({
+    file: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  }).isRequired,
+};
+
+const Processes = () => (
   <Section.Container id="process" Background={Background}>
     <Section.Header name="Process" icon="📈" label="tools" />
     <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
-      <Box width={[1, 1, 1]} px={[1, 2, 4]}>
-        <Fade bottom>
-          <ProcessContent>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s,
-          </ProcessContent>
-        </Fade>
-      </Box>
-
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-lg-3 col-md-6">
-            <Card class="card">
-              <a href="#discuss">
-                <ProcessIconContainer>
-                  <ProcessIconIndex className="index">1</ProcessIconIndex>
-                  <ProcessIcon
-                    className="header-img3"
-                    src={icon}
-                    alt="header"
-                  />
-                </ProcessIconContainer>
-              </a>
-              <div class="card-body #discuss">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+      <StaticQuery
+        query={graphql`
+          query ProcessesQuery {
+            contentfulAbout {
+              process {
+                cardDescription
+                cardImage {
+                  file {
+                    url
+                  }
+                }
+                cardTitle
+                cardIndex
+              }
+              processDescription {
+                childMarkdownRemark {
+                  rawMarkdownBody
+                }
+              }
+            }
+          }
+        `}
+        render={({ contentfulAbout }) => (
+          <Fragment>
+            <Box width={[1, 1, 1]} px={[1, 2, 4]}>
+              <Fade bottom>
+                <ProcessContent>
+                  {
+                    contentfulAbout.processDescription.childMarkdownRemark
+                      .rawMarkdownBody
+                  }
+                </ProcessContent>
+              </Fade>
+            </Box>
+            <div className="container-fluid">
+              <div className="row">
+                {contentfulAbout.process.map((p, i) => (
+                  <Process key={p.id} {...p} />
+                ))}
               </div>
-            </Card>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <Card class="card">
-              <a href="#concept">
-                <ProcessIconContainer>
-                  <ProcessIconIndex className="index">2</ProcessIconIndex>
-                  <ProcessIcon
-                    className="header-img3"
-                    src={icon}
-                    alt="header"
-                  />
-                </ProcessIconContainer>
-              </a>
-              <div class="card-body #concept">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </Card>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <Card class="card">
-              <a href="#plan">
-                <ProcessIconContainer>
-                  <ProcessIconIndex className="index">3</ProcessIconIndex>
-                  <ProcessIcon
-                    className="header-img3"
-                    src={icon}
-                    alt="header"
-                  />
-                </ProcessIconContainer>
-              </a>
-              <div class="card-body #plan">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </Card>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <Card class="card">
-              <a href="#implement">
-                <ProcessIconContainer>
-                  <ProcessIconIndex className="index">4</ProcessIconIndex>
-                  <ProcessIcon
-                    className="header-img3"
-                    src={icon}
-                    alt="header"
-                  />
-                </ProcessIconContainer>
-              </a>
-              <div class="card-body #implement">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div>
+            </div>
+          </Fragment>
+        )}
+      />
     </Flex>
   </Section.Container>
 );
 
-export default Process;
+export default Processes;
