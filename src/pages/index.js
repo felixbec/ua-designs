@@ -6,6 +6,7 @@ import Skills from '../sections/Skills';
 import Process from '../sections/Process';
 import Projects from '../sections/Projects';
 import Writing from '../sections/Writing';
+import Testimonials from '../sections/Testimonials';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Contact from '../sections/Contact';
@@ -17,6 +18,7 @@ const IndexPage = () => (
     <Landing />
     <About />
     <Skills />
+    <Testimonials />
     <Process />
     <Projects />
     <Writing />
