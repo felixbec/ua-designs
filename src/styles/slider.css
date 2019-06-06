@@ -1,0 +1,123 @@
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1;
+}
+.carousel-indicators {
+  bottom: -50px !important;
+}
+.carousel a {
+  width: 50px;
+  height: 50px;
+  background: #01b7a7;
+  border-radius: 50%;
+  margin: auto;
+  opacity: 1;
+}
+.carousel a:hover {
+  background: #01b7a7;
+  opacity: 0.5;
+}
+.carousel-indicators li {
+  margin-top: 100px;
+  background-color: #01b7a7 !important;
+}
+.carousel-caption {
+  position: static !important;
+}
+.testimonial__author h3 {
+  padding-top: 20px;
+  text-align: end;
+  color: #82f0d7;
+  margin-bottom: 0;
+  margin-right: 75px;
+}
+.testimonial__title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+.testimonial__image {
+  display: flex;
+  justify-content: center;
+}
+.testimonial__context {
+  margin: auto 0;
+}
+.testimonial__context:before {
+  content: '\201D';
+  top: -10px;
+  position: absolute;
+  left: -10px;
+  color: #82f0d7;
+  font-size: 3em;
+  z-index: 1;
+}
+.testimonial__context:after {
+  bottom: 0;
+  content: '\201D';
+  position: absolute;
+  right: 0px;
+  color: #82f0d7;
+  font-size: 3em;
+  z-index: 1;
+}
+.testimonial__position {
+  font-size: 12px;
+  text-align: end;
+  font-weight: 300;
+  font-style: italic;
+  margin-right: 75px;
+}
+
+@media screen and (max-width: 1200px) {
+  .testimonial__image {
+    justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .testimonial__image {
+    justify-content: center !important;
+  }
+  .carousel {
+    padding-bottom: 50px;
+  }
+  .carousel-indicators {
+    bottom: 0 !important;
+  }
+  .testimonial__title {
+    padding-top: 50px;
+  }
+  .carousel-caption h3 {
+    text-align: center;
+  }
+  .testimonial__position {
+    text-align: center;
+    margin-right: 0;
+  }
+  .testimonial__context:before {
+    display: none;
+  }
+  .testimonial__context:after {
+    display: none;
+  }
+  .testimonial__author h3 {
+    text-align: center;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
+  .testimonial__title {
+    padding-top: 25px;
+  }
+  .carousel {
+    padding-bottom: 25px;
+  }
+  .testimonial__title {
+    margin-bottom: 50px;
+  }
+}
