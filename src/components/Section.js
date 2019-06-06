@@ -18,6 +18,18 @@ const SectionContainer = styled.div`
   padding: 5em 1em;
   scroll-behavior: smooth;
 `;
+const SectionContainerFluid = styled.div`
+  min-height: 100vh;
+  min-width: 320px;
+  max-width: 2000px;
+  display: flex;
+  margin: auto;
+  flex: 0 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5em 1em;
+  scroll-behavior: smooth;
+`;
 
 const DefaultBackground = () => <div />;
 
@@ -29,6 +41,19 @@ const Container = ({ id, children, Background = DefaultBackground }) => (
 );
 
 Container.propTypes = {
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  Background: PropTypes.func,
+};
+
+const ContainerFluid = ({ id, children, Background = DefaultBackground }) => (
+  <Section id={id} style={{ position: 'relative' }}>
+    <Background />
+    <SectionContainerFluid>{children}</SectionContainerFluid>
+  </Section>
+);
+
+ContainerFluid.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   Background: PropTypes.func,
@@ -57,5 +82,6 @@ Header.propTypes = {
 
 export default {
   Container,
+  ContainerFluid,
   Header,
 };
