@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
 import { ProgressBar } from 'react-bootstrap';
 import Triangle from '../components/Triangle';
-import SkillsProgress from '../components/SkillsProgress';
 import markdownRenderer from '../components/MarkdownRenderer';
 import SectionFluid from '../components/SectionFluid';
 import Section from '../components/Section';

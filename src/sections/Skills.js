@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Box, Image, Flex, Text } from 'rebass';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -6,10 +7,10 @@ import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
 import { ProgressBar } from 'react-bootstrap';
 import Triangle from '../components/Triangle';
-import SkillsProgress from '../components/SkillsProgress';
 import markdownRenderer from '../components/MarkdownRenderer';
 import SectionFluid from '../components/SectionFluid';
 import Section from '../components/Section';
+import icon from '../../media/wp.png';
 
 const Background = () => (
   <div>
@@ -34,52 +35,109 @@ const Background = () => (
     />
   </div>
 );
+const SkillsBackground = styled.div`
+  background-color: lightgray;
+`;
+const LogoList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 0;
+  grid-gap: 0;
+  margin: 0;
+  margin-top: 50px;
+  img:hover {
+    opacity: 1;
+  }
+  img {
+    opacity: 0.6;
+    width: 100%;
+  }
+  @media screen and (min-width: 1101px) {
+    img {
+      /*height: 225px;*/
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    img {
+      /*height: 200px;*/
+    }
+  }
+  @media screen and (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 567px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const Skill = ({ progressSkillName, skillPercentage }) => (
+  <div>
+    <p>{progressSkillName}</p>
+    <ProgressBar animated variant="aqua" now={skillPercentage} />
+  </div>
+);
+
+Skill.propTypes = {
+  progressSkillName: PropTypes.string.isRequired,
+  skillPercentage: PropTypes.string.isRequired,
+};
 
 const Skills = () => (
-  <SectionFluid.Container id="skills" Background={Background}>
-    <SectionFluid.Header name="Skills" icon="🛠" label="tools" />
-
-    {/*<StaticQuery
-      query={graphql`
-        query SkillsQuery {
-          contentfulAbout {
-            skills {
-              progressSkillName
-              skillPercentage
+  <Fragment>
+    <Section.Container id="skills" Background={Background}>
+      <Section.Header name="Skills" icon="🛠" label="tools" />
+      <StaticQuery
+        query={graphql`
+          query SkillsQuery {
+            contentfulAbout {
+              skills {
+                progressSkillName
+                skillPercentage
+              }
             }
           }
-        }
-      `}
-      render={data => {
-        const { skills } = data.contentfulAbout;
-        return (
-          <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
-            <Box width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
-              <Fade bottom>
-                <div>
-                  {skills.map((progressSkillName, skillPercentage, index) => (
-                    <Text width={[300, 500]} key={index}>
-                      {progressSkillName}
-                      <ProgressBar animated now={5} />
-                    </Text>
-                  ))}
-                  <ProgressBar animated now={skills.skillPercentage} />
-                </div>
-              </Fade>
-            </Box>
-
-            <Box
-              width={[1, 1, 2 / 6]}
-              style={{ maxWidth: '300px', margin: 'auto' }}
-            />
-          </Flex>
-        );
-      }}
-    />*/}
-    <Fade right>
-      <SkillsProgress />
-    </Fade>
-  </SectionFluid.Container>
+        `}
+        render={({ contentfulAbout }) => (
+          <Fade bottom>
+            <div>
+              {contentfulAbout.skills.map((p, i) => (
+                <Skill key={p.id} {...p} />
+              ))}
+            </div>
+          </Fade>
+        )}
+      />
+      <SkillsBackground>
+        <div className="container">
+          <LogoList>
+            <div>
+              <a>
+                <img className="header-img3" src={icon} alt="header" />
+              </a>
+            </div>
+            <div>
+              <a>
+                <img className="header-img3" src={icon} alt="header" />
+              </a>
+            </div>
+            <div>
+              <a>
+                <img className="header-img3" src={icon} alt="header" />
+              </a>
+            </div>
+            <div>
+              <a>
+                <img className="header-img3" src={icon} alt="header" />
+              </a>
+            </div>
+          </LogoList>
+        </div>
+      </SkillsBackground>
+    </Section.Container>
+  </Fragment>
 );
 
 export default Skills;
