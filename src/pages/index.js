@@ -10,6 +10,7 @@ import Testimonials from '../sections/Testimonials';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Contact from '../sections/Contact';
+import Parallax from '../sections/Parallax';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const IndexPage = () => (
@@ -23,6 +24,7 @@ const IndexPage = () => (
     <Projects />
     <Writing />
     <Contact />
+    <Parallax />
     <Footer />
   </Layout>
 );
