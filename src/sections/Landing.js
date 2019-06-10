@@ -19,6 +19,7 @@ const BackgroundImg = () => (
 const Styles = {
   headerImg: {
     height: '100vh',
+    width: '100vw',
     position: 'absolute',
   },
   headingText: {
