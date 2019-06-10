@@ -10,7 +10,7 @@ import { CardContainer, Card } from '../components/Card';
 import markdownRenderer from '../components/MarkdownRenderer';
 import Section from '../components/Section';
 import Carousel from 'react-bootstrap/Carousel';
-import '../styles/slider.css';
+import '../styles/slider.scss';
 
 const Background = () => (
   <div>

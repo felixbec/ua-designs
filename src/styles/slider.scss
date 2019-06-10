@@ -4,18 +4,23 @@
 }
 .carousel-indicators {
   bottom: -50px !important;
+  z-index: 0 !important;
 }
-.carousel a {
-  width: 50px;
-  height: 50px;
-  background: #01b7a7;
-  border-radius: 50%;
-  margin: auto;
-  opacity: 1;
-}
-.carousel a:hover {
-  background: #01b7a7;
-  opacity: 0.5;
+
+.carousel {
+  a {
+    width: 50px;
+    height: 50px;
+    background: #01b7a7;
+    border-radius: 50%;
+    margin: auto;
+    opacity: 1;
+    z-index: 0;
+    a:hover {
+      background: #01b7a7;
+      opacity: 0.5;
+    }
+  }
 }
 .carousel-indicators li {
   margin-top: 100px;
@@ -49,7 +54,7 @@
   left: -10px;
   color: #82f0d7;
   font-size: 3em;
-  z-index: 1;
+  z-index: 0;
 }
 .testimonial__context:after {
   bottom: 0;
@@ -58,7 +63,7 @@
   right: 0px;
   color: #82f0d7;
   font-size: 3em;
-  z-index: 1;
+  z-index: 0;
 }
 .testimonial__position {
   font-size: 12px;

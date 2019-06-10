@@ -10,46 +10,24 @@ import MouseIcon from '../components/MouseIcon';
 import Triangle from '../components/Triangle';
 import HeaderImg from '../../media/headerBanner.jpeg';
 
-const Background = () => (
+const BackgroundImg = () => (
   <div>
-    <Triangle
-      color="backgroundDark"
-      height={['35vh', '80vh']}
-      width={['95vw', '60vw']}
-    />
-
-    <Triangle
-      color="secondary"
-      height={['38vh', '80vh']}
-      width={['50vw', '35vw']}
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['25vh', '35vh']}
-      width={['75vw', '60vw']}
-      invertX
-    />
-
-    <Triangle
-      color="backgroundDark"
-      height={['20vh', '20vh']}
-      width={['100vw', '100vw']}
-      invertX
-      invertY
-    />
+    <img src={HeaderImg} style={Styles.headerImg} />
   </div>
 );
-const BackgroundImg = () => <img src={HeaderImg} style={Styles.headerImg} />;
 
 const Styles = {
   headerImg: {
     height: '100vh',
+    position: 'absolute',
+  },
+  headingText: {
+    zIndex: 0,
   },
 };
 
 const LandingPage = () => (
-  <Section.Container className="container" id="home">
+  <Section.Container className="container" Background={BackgroundImg} id="home">
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
@@ -74,14 +52,15 @@ const LandingPage = () => (
             <Heading
               textAlign="center"
               as="h1"
-              color="primary"
+              color="background"
               fontSize={[5, 6, 8]}
               mb={[3, 4, 5]}
+              style={Styles.headingText}
             >
-              {`Hello, I am ${name} the`}
-              <TextLoop interval={1000}>
+              {`Hello, I am ${name} the `}
+              <TextLoop interval={100000}>
                 {jobRoles.map(text => (
-                  <Text width={[300, 500]} key={text}>
+                  <Text width={[300]} key={text}>
                     {text}
                   </Text>
                 ))}
@@ -103,7 +82,12 @@ const LandingPage = () => (
                 ))}
               </TextLoop>
             </Heading>
-            <Flex alignItems="center" justifyContent="center" flexWrap="wrap">
+            <Flex
+              alignItems="center"
+              justifyContent="center"
+              flexWrap="wrap"
+              style={Styles.headingText}
+            >
               {socialLinks.map(({ id, ...rest }) => (
                 <Box mx={3} fontSize={[5, 6, 6]} key={id}>
                   <SocialLink {...rest} />

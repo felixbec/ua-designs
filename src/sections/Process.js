@@ -102,7 +102,7 @@ Process.propTypes = {
 };
 
 const Processes = () => (
-  <Section.Container id="process" Background={Background}>
+  <Section.Container id="process">
     <Section.Header name="Process" icon="📈" label="tools" />
     <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
       <StaticQuery

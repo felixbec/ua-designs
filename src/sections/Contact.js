@@ -9,7 +9,7 @@ import Triangle from '../components/Triangle';
 import markdownRenderer from '../components/MarkdownRenderer';
 import SectionFluid from '../components/SectionFluid';
 import Section from '../components/Section';
-import '../styles/contact.css';
+import '../styles/contact.scss';
 import mailIcon from '../../media/contactLogo@1x.png';
 import Tilt from 'react-tilt';
 
@@ -22,40 +22,6 @@ const Background = () => (
 
 const Contact = () => (
   <Section.Container id="contact" Background={Background}>
-    {/*<Section.Header name="Contact" icon="📩" label="tools" />
-    
-    <StaticQuery
-      query={graphql`
-        query SkillsQuery {
-          allContentfulSkills {
-            nodes {
-              skillTitle
-              skillPercentage
-            }
-          }
-        }
-      `}
-      render={data => {
-        const { skillTitle, skillPercentage } = data.allContentfulSkills.nodes;
-        return (
-          <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
-            <Box width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
-              <Fade bottom>
-                <div>
-                  <p>{skillTitle}</p>
-                  <ProgressBar animated now={skillPercentage} />
-                </div>
-              </Fade>
-            </Box>
-
-            <Box
-              width={[1, 1, 2 / 6]}
-              style={{ maxWidth: '300px', margin: 'auto' }}
-            />
-          </Flex>
-        );
-      }}
-    />*/}
     <div class="bg-contact100">
       <div class="container-contact100">
         <div class="wrap-contact100">

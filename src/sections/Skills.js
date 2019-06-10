@@ -11,32 +11,36 @@ import markdownRenderer from '../components/MarkdownRenderer';
 import SectionFluid from '../components/SectionFluid';
 import Section from '../components/Section';
 import icon from '../../media/wp.png';
+import backgroundImg from '../../media/image1.jpg';
 
-const Background = () => (
+const BackgroundImg = () => (
   <div>
-    <Triangle
-      color="secondaryLight"
-      height={['50vh', '20vh']}
-      width={['50vw', '50vw']}
-      invertY
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['20vh', '40vh']}
-      width={['75vw', '70vw']}
-      invertX
-    />
-
-    <Triangle
-      color="backgroundDark"
-      height={['25vh', '20vh']}
-      width={['100vw', '100vw']}
-    />
+    <img src={backgroundImg} style={Styles.backgroundImg} />
   </div>
 );
+const Background = () => (
+  <div className="background__container" style={Styles.backgroundImg} />
+);
+
+const Styles = {
+  backgroundImg: {
+    height: '100vh',
+    width: '100%',
+    position: 'absolute',
+    background: '#282E34',
+  },
+  headingText: {
+    zIndex: 0,
+  },
+  skillsContainer: {
+    height: '55vh',
+  },
+};
+
 const SkillsBackground = styled.div`
-  background-color: lightgray;
+  position: absolute;
+  bottom: 0;
+  height: 35vh;
 `;
 const LogoList = styled.div`
   display: grid;
@@ -51,16 +55,6 @@ const LogoList = styled.div`
   img {
     opacity: 0.6;
     width: 100%;
-  }
-  @media screen and (min-width: 1101px) {
-    img {
-      /*height: 225px;*/
-    }
-  }
-  @media screen and (max-width: 1100px) {
-    img {
-      /*height: 200px;*/
-    }
   }
   @media screen and (max-width: 992px) {
     grid-template-columns: 1fr 1fr;
@@ -102,7 +96,7 @@ const Skills = () => (
         `}
         render={({ contentfulAbout }) => (
           <Fade bottom>
-            <div>
+            <div className="skill__container" style={Styles.skillsContainer}>
               {contentfulAbout.skills.map((p, i) => (
                 <Skill key={p.id} {...p} />
               ))}

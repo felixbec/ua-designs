@@ -1,0 +1,20 @@
+.navbar {
+  position: fixed !important;
+  z-index: 3 !important;
+  .navbar-toggler {
+    border: 0 !important;
+  }
+  .links__container {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    height: 100vh;
+    align-items: center;
+  }
+  .navbar-nav {
+    padding: 10px 0;
+    span {
+      font-size: 35px;
+    }
+  }
+}

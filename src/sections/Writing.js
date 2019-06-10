@@ -134,7 +134,7 @@ const Writing = () => (
       const { isMediumUserDefined } = site.siteMetadata;
       return (
         isMediumUserDefined && (
-          <Section.Container id="writing" Background={Background}>
+          <Section.Container id="writing">
             <Section.Header name="Writing" icon="✍️" label="writing" />
             <CardContainer minWidth="300px">
               {posts.map(p => (
