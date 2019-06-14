@@ -19,15 +19,6 @@ const Styles = {
 
 const capitalize = s => s && s[0].toUpperCase() + s.slice(1);
 
-const HeaderContainer = styled(Headroom)`
-  .headroom--pinned {
-    background: transparent;
-  }
-
-  position: absolute;
-  width: 100%;
-`;
-
 const formatLinks = allLinks =>
   Object.entries(allLinks).reduce(
     (acc, [key, value]) => {
@@ -60,7 +51,7 @@ class Header extends React.Component {
       isCollapsed: !state.isCollapsed,
     }));
     if (this.state.isCollapsed == false) {
-      this.setState({ backgroundColor: 'rgba(1,134,135,0.8)' });
+      this.setState({ backgroundColor: 'rgba(247,206,62,0.8)' });
     } else if (this.state.isCollapsed == true) {
       this.setState({ backgroundColor: 'transparent' });
     } else {
@@ -70,7 +61,13 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Navbar expand="*" style={{ background: this.state.backgroundColor }}>
+      <Navbar
+        expand="*"
+        style={{
+          background: this.state.backgroundColor,
+          transition: 'all .5s ease',
+        }}
+      >
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           className="button"
@@ -111,7 +108,7 @@ class Header extends React.Component {
                 return (
                   <Fragment>
                     <Navbar.Brand>
-                      {homeLink}
+                      {/*{homeLink}*/}
                       <Flex className="links__container" mr={[0, 3, 5]}>
                         {navLinks}
                       </Flex>
