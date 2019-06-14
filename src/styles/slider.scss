@@ -11,20 +11,20 @@
   a {
     width: 50px;
     height: 50px;
-    background: #01b7a7;
+    background: #1a2930;
     border-radius: 50%;
     margin: auto;
     opacity: 1;
     z-index: 0;
     a:hover {
-      background: #01b7a7;
+      background: #1a2930;
       opacity: 0.5;
     }
   }
 }
 .carousel-indicators li {
   margin-top: 100px;
-  background-color: #01b7a7 !important;
+  background-color: #f7ce3e !important;
 }
 .carousel-caption {
   position: static !important;
@@ -32,7 +32,7 @@
 .testimonial__author h3 {
   padding-top: 20px;
   text-align: end;
-  color: #82f0d7;
+  color: #f7ce3e;
   margin-bottom: 0;
   margin-right: 75px;
 }
@@ -47,24 +47,7 @@
 .testimonial__context {
   margin: auto 0;
 }
-.testimonial__context:before {
-  content: '\201D';
-  top: -10px;
-  position: absolute;
-  left: -10px;
-  color: #82f0d7;
-  font-size: 3em;
-  z-index: 0;
-}
-.testimonial__context:after {
-  bottom: 0;
-  content: '\201D';
-  position: absolute;
-  right: 0px;
-  color: #82f0d7;
-  font-size: 3em;
-  z-index: 0;
-}
+
 .testimonial__position {
   font-size: 12px;
   text-align: end;

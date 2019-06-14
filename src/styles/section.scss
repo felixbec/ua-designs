@@ -1,0 +1,8 @@
+.visible {
+  left: 0px;
+  transition: all 3s ease 0s;
+}
+.visible--hidden {
+  left: -2000px;
+  transition: all 3s ease 0s;
+}
