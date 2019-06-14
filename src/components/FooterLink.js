@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 
 const IconLink = styled(Link)`
   transition: color 0.5s;
-  color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.background};
 
   &:hover {
-    color: ${props => props.theme.colors.primaryLight};
+    color: ${props => props.theme.colors.denimGray};
   }
 `;
 

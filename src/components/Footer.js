@@ -11,8 +11,8 @@ import FontAwesome from 'react-fontawesome';
 
 const FooterContainer = styled.footer`
   padding: 0 1em;
-  background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.MarigoldYellow};
+  color: ${props => props.theme.colors.background};
   display: block;
   flex: 0 1 auto;
   flex-direction: column;
@@ -21,18 +21,9 @@ const FooterContainer = styled.footer`
   .row {
     text-align: center;
     padding: 100px;
-  }
-`;
-
-const ArrowDiv = styled.div`
-  display: flex;
-  background: white;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  a {
-    font-size: 48px;
-    color: #018786;
+    @media screen and (max-width: 576px) {
+      padding: 25px;
+    }
   }
 `;
 
@@ -93,11 +84,11 @@ const Footer = () => (
       return (
         <FooterContainer>
           <div className="row">
-            <div class="col-md-6" style={Styles.textside}>
+            <div className="col-md-6" style={Styles.textside}>
               <h3>Living, learning, & leveling up one day at a time.</h3>
               {socialLinks.url}
             </div>
-            <div class="col-md-6">
+            <div className="col-md-6">
               {socialLinks.map(({ id, ...rest }) => (
                 <Box mx={3} fontSize={[5, 6, 6]} key={id}>
                   <FooterLink {...rest} />
@@ -105,7 +96,7 @@ const Footer = () => (
                 </Box>
               ))}
             </div>
-            <div class="col-md-12" style={Styles.copyright}>
+            <div className="col-md-12" style={Styles.copyright}>
               &copy; 2019 | UA-Designs
             </div>
           </div>
