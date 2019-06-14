@@ -34,8 +34,8 @@ class IndexPage extends React.Component {
         <Landing />
         <About />
         <ToggleSections />
-        <Testimonials />
         <Projects />
+        <Testimonials />
         <Contact />
         <Footer />
       </Layout>
