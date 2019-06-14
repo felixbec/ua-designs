@@ -181,11 +181,11 @@ const Project = ({
 
 Project.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   projectUrl: PropTypes.string.isRequired,
   repositoryUrl: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  publishedDate: PropTypes.string.isRequired,
+  publishedDate: PropTypes.string,
   logo: PropTypes.shape({
     image: PropTypes.shape({
       src: PropTypes.string,

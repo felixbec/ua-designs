@@ -10,25 +10,16 @@ import MouseIcon from '../components/MouseIcon';
 import Triangle from '../components/Triangle';
 import HeaderImg from '../../media/headerBanner.jpeg';
 
-const BackgroundImg = () => (
-  <div>
-    <img src={HeaderImg} style={Styles.headerImg} />
-  </div>
-);
+const BackgroundImg = () => <div style={Styles.headerImg} />;
 
 const Styles = {
-  headerImg: {
-    height: '100vh',
-    width: '100vw',
-    position: 'absolute',
-  },
   headingText: {
     zIndex: 0,
   },
 };
 
 const LandingPage = () => (
-  <Section.Container className="container" Background={BackgroundImg} id="home">
+  <Section.ContainerParallaxBlack className="container" id="home">
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
@@ -70,7 +61,7 @@ const LandingPage = () => (
 
             <Heading
               as="h2"
-              color="primary"
+              color="background"
               fontSize={[4, 5, 6]}
               mb={[3, 5]}
               textAlign="center"
@@ -102,7 +93,7 @@ const LandingPage = () => (
         );
       }}
     />
-  </Section.Container>
+  </Section.ContainerParallaxBlack>
 );
 
 export default LandingPage;

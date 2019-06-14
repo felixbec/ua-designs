@@ -11,13 +11,7 @@ import markdownRenderer from '../components/MarkdownRenderer';
 import Section from '../components/Section';
 import Carousel from 'react-bootstrap/Carousel';
 import '../styles/slider.scss';
-
-const Background = () => (
-  <div>
-    <Triangle color="primary" height={['100vh']} width={['100vw']} invertY />
-    <Triangle color="primary" height={['100vh']} width={['100vw']} invertX />
-  </div>
-);
+import FontAwesome from 'react-fontawesome';
 
 const TestimonialImage = styled.img`
   width: 300px;
@@ -35,6 +29,17 @@ const Styles = {
   context: {
     color: '#6c757d',
   },
+  flexCenter: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  quoteIcons: {
+    fontSize: '20px',
+    border: '1px solid #f7ce3e',
+    color: '#f7ce3e',
+    padding: '10px',
+    borderRadius: '50%',
+  },
 };
 
 const Testimonial = ({
@@ -43,11 +48,14 @@ const Testimonial = ({
   authorRole,
   testimonialAuthorImage,
 }) => (
-  <div class="row">
-    <div class="col-lg-5 testimonial__image">
+  <div className="row">
+    <div className="col-lg-5 testimonial__image">
       <TestimonialImage src={testimonialAuthorImage.file.url} />
     </div>
-    <div class="col-lg-6 testimonial__context">
+    <div className="col-lg-6 testimonial__context">
+      <div style={Styles.flexCenter}>
+        <FontAwesome name="quote-right" style={Styles.quoteIcons} />
+      </div>
       <Carousel.Caption style={Styles.context}>
         <p>{authorQuote.authorQuote}</p>
       </Carousel.Caption>
@@ -71,8 +79,7 @@ Testimonial.propTypes = {
 };
 
 const Testimonials = () => (
-  <Section.Container id="testimonials" Background={Background}>
-    <Section.Header name="Testimonials" icon="🗣" label="tools" />
+  <Section.ContainerTestimonial id="testimonials">
     <StaticQuery
       query={graphql`
         query TestimonialQuery {
@@ -93,27 +100,25 @@ const Testimonials = () => (
         }
       `}
       render={({ contentfulAbout }) => (
-        <div class="bg-contact100">
-          <div class="container-contact100">
-            <div class="wrap-contact100">
-              <div class="container">
-                <div class="col-md-12 testimonial__title">
-                  <h2>See what others say about me!</h2>
-                </div>
-                <Carousel>
-                  {contentfulAbout.testimonials.map((p, i) => (
-                    <Carousel.Item>
-                      <Testimonial key={p.id} {...p} />
-                    </Carousel.Item>
-                  ))}
-                </Carousel>
+        <div className="bg-contact100">
+          <div className="container-contact100">
+            <div className="wrap-contact100">
+              <div className="col-md-12 testimonial__title">
+                <h2>See what others say about me!</h2>
               </div>
+              <Carousel>
+                {contentfulAbout.testimonials.map((p, i) => (
+                  <Carousel.Item>
+                    <Testimonial key={p.id} {...p} />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
             </div>
           </div>
         </div>
       )}
     />
-  </Section.Container>
+  </Section.ContainerTestimonial>
 );
 
 export default Testimonials;
