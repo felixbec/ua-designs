@@ -4,6 +4,7 @@ import { Section } from 'react-scroll-section';
 import { Heading } from 'rebass';
 import PropTypes from 'prop-types';
 import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 import LinkAnimated from './LinkAnimated';
 import HeaderImg from '../../media/headerBanner.jpeg';
 import '../styles/parallax.scss';
@@ -60,6 +61,14 @@ const Overlay = styled.div`
   top: 0;
   background: rgba(26, 41, 48, 0.9);
 `;
+const OverlayLight = styled.div`
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(26, 41, 48, 0.6);
+`;
 const OverlayYellow = styled.div`
   height: 100vh;
   width: 100vw;
@@ -92,6 +101,42 @@ const Container = ({ id, children, Background = DefaultBackground }) => (
 );
 
 Container.propTypes = {
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  Background: PropTypes.func,
+};
+const ContainerBlue = ({ id, children, Background = DefaultBackground }) => (
+  <Section
+    id={id}
+    style={{
+      position: 'relative',
+      background: '#1a2930',
+    }}
+  >
+    <Background />
+    <SectionContainer>{children}</SectionContainer>
+  </Section>
+);
+
+ContainerBlue.propTypes = {
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  Background: PropTypes.func,
+};
+
+const ContainerFluid = ({ id, children, Background = DefaultBackground }) => (
+  <Section
+    id={id}
+    style={{
+      position: 'relative',
+    }}
+  >
+    <Background />
+    <SectionContainerFluid>{children}</SectionContainerFluid>
+  </Section>
+);
+
+ContainerFluid.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   Background: PropTypes.func,
@@ -157,9 +202,9 @@ const ContainerParallaxContact = ({
   Background = DefaultBackground,
 }) => (
   <Section id={id} className="parallax--contact">
-    <Overlay>
+    <OverlayLight>
       <SectionContainer>{children}</SectionContainer>
-    </Overlay>
+    </OverlayLight>
   </Section>
 );
 
@@ -204,16 +249,18 @@ ContainerParallaxContactShort.propTypes = {
 
 const Header = ({ name, icon = '', label = '' }) => [
   <React.Fragment>
-    <Heading color="denimGray" mb={4}>
-      <LinkAnimated selected>
-        {name}
-        {icon && (
-          <span role="img" aria-label={label} style={{ marginLeft: '10px' }}>
-            {icon}
-          </span>
-        )}
-      </LinkAnimated>
-    </Heading>
+    <Fade top>
+      <Heading color="MarigoldYellow" mb={4} style={{ textAlign: 'center' }}>
+        <LinkAnimated selected>
+          {name}
+          {icon && (
+            <span role="img" aria-label={label} style={{ marginLeft: '10px' }}>
+              {icon}
+            </span>
+          )}
+        </LinkAnimated>
+      </Heading>
+    </Fade>
   </React.Fragment>,
 ];
 
@@ -225,6 +272,8 @@ Header.propTypes = {
 
 export default {
   Container,
+  ContainerBlue,
+  ContainerFluid,
   ContainerTestimonial,
   ContainerParallax,
   ContainerParallaxBlack,

@@ -8,7 +8,7 @@ const LinkAnimated = styled.span`
   color: inherit;
   ${props =>
     props.selected &&
-    `border-bottom:  5px solid ${props.theme.colors.MarigoldYellow}`};
+    `border-bottom:  5px solid ${props.theme.colors.screenGray}`};
   transition: 0.4s;
   cursor: ${props => (props.onClick ? 'pointer' : 'default')};
 
@@ -18,7 +18,7 @@ const LinkAnimated = styled.span`
     right: 0;
     width: 0;
     bottom: -5px;
-    background: ${props => props.theme.colors.screenGray};
+    background: ${props => props.theme.colors.denimGray};
     height: 5px;
     transition-property: width;
     transition-duration: 0.3s;

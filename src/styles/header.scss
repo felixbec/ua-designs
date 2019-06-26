@@ -17,4 +17,46 @@
       font-size: 35px;
     }
   }
+  .button {
+    width: 65px;
+    height: 40px;
+    //position: absolute;
+    //top: 50px;
+    //right: 100px;
+  }
+  .navbar-toggler-icon {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 2px;
+    width: 42px;
+    background: #f7ce3e;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 0.3s ease-in-out;
+  }
+  .navbar-toggler-icon::before {
+    top: -10px;
+    cursor: pointer;
+    border-radius: 1px;
+    height: 2px;
+    width: 42px;
+    background: #f7ce3e;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 0.3s ease-in-out;
+  }
+  .navbar-toggler-icon::after {
+    bottom: -10px;
+    cursor: pointer;
+    border-radius: 1px;
+    height: 2px;
+    width: 42px;
+    background: #f7ce3e;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 0.3s ease-in-out;
+  }
 }

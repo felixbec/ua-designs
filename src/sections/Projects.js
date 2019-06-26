@@ -11,40 +11,7 @@ import Triangle from '../components/Triangle';
 import ImageSubtitle from '../components/ImageSubtitle';
 import Hide from '../components/Hide';
 
-const Background = () => (
-  <div>
-    <Triangle
-      color="secondaryLight"
-      height={['80vh', '80vh']}
-      width={['100vw', '100vw']}
-      invertX
-    />
-
-    <Triangle
-      color="background"
-      height={['50vh', '20vh']}
-      width={['50vw', '50vw']}
-      invertX
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['25vh', '40vh']}
-      width={['75vw', '60vw']}
-      invertX
-      invertY
-    />
-
-    <Triangle
-      color="backgroundDark"
-      height={['25vh', '20vh']}
-      width={['100vw', '100vw']}
-      invertY
-    />
-  </div>
-);
-
-const CARD_HEIGHT = '400px';
+const CARD_HEIGHT = '200px';
 
 const MEDIA_QUERY_SMALL = '@media (max-width: 400px)';
 
@@ -80,7 +47,7 @@ const ImageContainer = styled.div`
 const ProjectImage = styled(Image)`
   width: ${CARD_HEIGHT};
   height: ${CARD_HEIGHT};
-  /*padding: 40px;*/
+  padding: 40px;
   margin-top: 0px;
 
   ${MEDIA_QUERY_SMALL} {
@@ -93,7 +60,7 @@ const ProjectImage = styled(Image)`
 const ProjectOverlay = styled.div`
   width: ${CARD_HEIGHT};
   height: ${CARD_HEIGHT};
-  /*padding: 40px;*/
+  padding: 40px;
   margin-top: 0px;
 
   ${MEDIA_QUERY_SMALL} {
@@ -127,7 +94,7 @@ const Project = ({
 }) => (
   <Card p={0}>
     <Flex style={{ height: CARD_HEIGHT }}>
-      {/*<TextContainer>
+      <TextContainer>
         <span>
           <Title my={2} pb={1}>
             {name}
@@ -136,7 +103,7 @@ const Project = ({
         <Text width={[1]} style={{ overflow: 'auto' }}>
           {description}
         </Text>
-      </TextContainer>*/}
+      </TextContainer>
 
       <ImageContainer>
         <ProjectImage src={logo.image.src} alt={logo.title} />
@@ -162,7 +129,7 @@ const Project = ({
             </Box>
           </Flex>
           {/*<ImageSubtitle
-            bg="primaryLight"
+            bg="MarigoldYellow"
             color="white"
             y="bottom"
             x="right"
@@ -194,7 +161,7 @@ Project.propTypes = {
 };
 
 const Projects = () => (
-  <Section.Container id="projects">
+  <Section.ContainerBlue id="projects">
     <Section.Header name="Projects" icon="💻" Box="notebook" />
     <StaticQuery
       query={graphql`
@@ -228,7 +195,7 @@ const Projects = () => (
         </CardContainer>
       )}
     />
-  </Section.Container>
+  </Section.ContainerBlue>
 );
 
 export default Projects;

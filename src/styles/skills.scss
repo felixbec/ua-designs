@@ -1,0 +1,111 @@
+.graph-bar {
+  width: calc(100% / 13);
+  border: 2px solid white;
+  display: inline-block;
+  background-color: #1a2930;
+  position: relative;
+  direction: ltr;
+  border-bottom: none;
+  @media screen and (max-width: 992px) {
+    border: 1px solid white;
+    border-bottom: none;
+  }
+
+  .inside {
+    bottom: 0;
+    color: #fff;
+    font-family: 'work sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transform: rotate(-90deg);
+    position: absolute;
+    width: 180px;
+    text-align: left;
+    margin: 0 0 110px -53px;
+  }
+}
+.bar-1 {
+  height: 350px;
+  opacity: 1;
+}
+.bar-2 {
+  height: 320px;
+  opacity: 1;
+}
+.bar-3 {
+  height: 300px;
+  opacity: 1;
+}
+.bar-4 {
+  height: 340px;
+  opacity: 1;
+}
+.bar-5 {
+  height: 350px;
+  opacity: 1;
+}
+.bar-6 {
+  height: 320px;
+  opacity: 1;
+}
+.bar-7 {
+  height: 310px;
+  opacity: 1;
+}
+.bar-8 {
+  height: 250px;
+  opacity: 1;
+}
+.bar-9 {
+  height: 350px;
+  opacity: 1;
+}
+.bar-10 {
+  height: 325px;
+  opacity: 1;
+}
+.bar-11 {
+  height: 350px;
+  opacity: 1;
+}
+.bar-12 {
+  height: 200px;
+  opacity: 1;
+}
+.bar-13 {
+  height: 310px;
+  opacity: 1;
+}
+.skill-container {
+  position: relative;
+  top: 6px;
+  left: -2px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+.card--skills {
+  background-color: #1a2930 !important;
+}
+.card-text {
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+.skills--hidden {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+.process--show {
+  @media screen and (max-width: 768px) {
+    height: auto !important;
+  }
+}
+.process--hidden {
+  @media screen and (max-width: 576px) {
+    .container {
+      justify-content: center !important;
+    }
+  }
+}

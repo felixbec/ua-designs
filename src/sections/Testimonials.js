@@ -56,7 +56,7 @@ const Testimonial = ({
       <div style={Styles.flexCenter}>
         <FontAwesome name="quote-right" style={Styles.quoteIcons} />
       </div>
-      <Carousel.Caption style={Styles.context}>
+      <Carousel.Caption style={Styles.context} className="container">
         <p>{authorQuote.authorQuote}</p>
       </Carousel.Caption>
     </div>

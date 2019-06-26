@@ -3,12 +3,14 @@ import Skills from '../sections/Skills';
 import Process from '../sections/Process';
 import Section from '../components/Section';
 import { bool } from 'prop-types';
+import styled from 'styled-components';
+import FontAwesome from 'react-fontawesome';
 
 const Styles = {
   toggleButton: {
-    color: 'red',
     zIndex: '4',
-    textAlign: 'right',
+    textTransform: 'uppercase',
+    color: '#f7ce3e',
   },
   background: {
     height: '100vh',
@@ -17,7 +19,26 @@ const Styles = {
     zIndex: '-1',
     position: 'absolute',
   },
+  flexEnd: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginBotton: '10px',
+  },
+  icon: {
+    marginLeft: '10px',
+    color: '#1a2930',
+  },
 };
+const SkillsHidden = styled.div`
+  transition: all 1s ease 0s;
+  left: 0px;
+  position: relative;
+  height: 100vh;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
+`;
 
 export default class Toggle extends Component {
   constructor(props) {
@@ -42,7 +63,46 @@ export default class Toggle extends Component {
   render() {
     return (
       <div style={{ position: 'relative' }}>
-        <Section.ContainerParallax id="skills">
+        <Section.ContainerFluid id="skills">
+          {this.state.hidden == false ? (
+            <div
+              className="process--hidden"
+              style={{
+                transition: 'all 1s ease 0s',
+                left: '-2000px',
+                position: 'absolute',
+                height: '100vh',
+              }}
+            >
+              <Section.Header name="Process" icon="🛠" label="tools" />
+              <div className="container" style={Styles.flexEnd}>
+                <button style={Styles.toggleButton} onClick={this.handleClick}>
+                  Go to Skills
+                  <FontAwesome style={Styles.icon} name="arrow-circle-right" />
+                </button>
+              </div>
+              <Process />
+            </div>
+          ) : (
+            <div
+              className="process--show"
+              style={{
+                transition: 'all 1s ease 0s',
+                left: '0px',
+                position: 'relative',
+                height: '100vh',
+              }}
+            >
+              <Section.Header name="Process" icon="🛠" label="tools" />
+              <div className="container" style={Styles.flexEnd}>
+                <button style={Styles.toggleButton} onClick={this.handleClick}>
+                  Go to Skills
+                  <FontAwesome style={Styles.icon} name="arrow-circle-right" />
+                </button>
+              </div>
+              <Process />
+            </div>
+          )}
           {this.state.hidden == false ? (
             <div
               id="skills"
@@ -51,14 +111,16 @@ export default class Toggle extends Component {
                 left: '0px',
                 position: 'relative',
                 height: '100vh',
-                background: 'rgba(247, 206, 62, 0.6)',
               }}
-              className="skills"
+              className="skills--show"
             >
               <Section.Header name="Skills" icon="🛠" label="tools" />
-              <button style={Styles.toggleButton} onClick={this.handleClick}>
-                Go to Process
-              </button>
+              <div className="container" style={Styles.flexEnd}>
+                <button style={Styles.toggleButton} onClick={this.handleClick}>
+                  Go to Process
+                  <FontAwesome style={Styles.icon} name="arrow-circle-right" />
+                </button>
+              </div>
               <Skills />
             </div>
           ) : (
@@ -69,54 +131,20 @@ export default class Toggle extends Component {
                 left: '-2000px',
                 position: 'absolute',
                 height: '100vh',
-                background: 'rgba(247, 206, 62, 0.6)',
               }}
-              className="ProcessSkills"
+              className="skills--hidden"
             >
               <Section.Header name="Skills" icon="🛠" label="tools" />
-              <button style={Styles.toggleButton} onClick={this.handleClick}>
-                Go to Process
-              </button>
+              <div className="container" style={Styles.flexEnd}>
+                <button style={Styles.toggleButton} onClick={this.handleClick}>
+                  Go to Process
+                  <FontAwesome style={Styles.icon} name="arrow-circle-right" />
+                </button>
+              </div>
               <Skills />
             </div>
           )}
-
-          {this.state.hidden == false ? (
-            <div
-              className="process1"
-              style={{
-                transition: 'all 1s ease 0s',
-                left: '-2000px',
-                position: 'absolute',
-                height: '100vh',
-                background: 'rgba(26, 41, 48, 0.9)',
-              }}
-            >
-              <Section.Header name="Process" icon="🛠" label="tools" />
-              <button style={Styles.toggleButton} onClick={this.handleClick}>
-                Go to Skills
-              </button>
-              <Process />
-            </div>
-          ) : (
-            <div
-              className="process2"
-              style={{
-                transition: 'all 1s ease 0s',
-                left: '0px',
-                position: 'relative',
-                height: '100vh',
-                background: 'rgba(26, 41, 48, 0.9)',
-              }}
-            >
-              <Section.Header name="Process" icon="🛠" label="tools" />
-              <button style={Styles.toggleButton} onClick={this.handleClick}>
-                Go to Skills
-              </button>
-              <Process />
-            </div>
-          )}
-        </Section.ContainerParallax>
+        </Section.ContainerFluid>
       </div>
     );
   }

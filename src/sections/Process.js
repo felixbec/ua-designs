@@ -10,6 +10,7 @@ import { ProgressBar } from 'react-bootstrap';
 import Triangle from '../components/Triangle';
 import markdownRenderer from '../components/MarkdownRenderer';
 import Section from '../components/Section';
+import FontAwesome from 'react-fontawesome';
 import icon from '../../media/ss.png';
 
 const Background = () => <div style={Styles.background} />;
@@ -18,16 +19,16 @@ const ProcessIconContainer = styled.div`
   height: 140px;
   margin: 0 auto;
   color: ${props => props.theme.colors.background};
-  background-color: ${props => props.theme.colors.secondary};
+  background-color: ${props => props.theme.colors.denimGray};
   border-radius: 50%;
   display: flex;
   position: relative;
   transition: all 0.5s ease-in-out;
 
   :hover {
-    background-color: ${props => props.theme.colors.primary};
+    background-color: ${props => props.theme.colors.MarigoldYellow};
     .index {
-      background-color: ${props => props.theme.colors.secondary};
+      background-color: ${props => props.theme.colors.denimGray};
       transition: background-color 1s;
     }
 
@@ -42,7 +43,7 @@ const ProcessIconIndex = styled.div`
   height: 40px;
   margin: auto;
   color: ${props => props.theme.colors.background};
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.MarigoldYellow};
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -52,17 +53,29 @@ const ProcessIconIndex = styled.div`
 `;
 
 const ProcessIcon = styled.img`
-  width: 100%;
+  width: 50px;
+  height: 50px;
+  margin: auto;
 `;
 const ProcessContent = styled.div`
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 10vh;
 `;
 
 const Card = styled.div`
   .card-body {
     text-align: center;
+    padding: 1.25rem 0;
   }
+  margin: 0 !important;
+  border: none !important;
+`;
+
+const Container = styled.div`
+margin: 10vh auto;
+@media screen and (max-width: 992px) {
+  margin: auto;
+}'
 `;
 
 const Process = ({ cardTitle, cardDescription, cardImage, cardIndex }) => (
@@ -76,6 +89,7 @@ const Process = ({ cardTitle, cardDescription, cardImage, cardIndex }) => (
             src={cardImage.file.url}
             alt="lil"
           />
+          <FontAwesome name="handshake" />
         </ProcessIconContainer>
       </a>
       <div className="card-body #discuss">
@@ -128,7 +142,7 @@ class Processes extends React.Component {
   render() {
     return (
       <Fragment>
-        <div className="container">
+        <Container className="container">
           <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
             <StaticQuery
               query={graphql`
@@ -173,7 +187,7 @@ class Processes extends React.Component {
               )}
             />
           </Flex>
-        </div>
+        </Container>
       </Fragment>
     );
   }

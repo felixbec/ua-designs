@@ -51,7 +51,7 @@ class Header extends React.Component {
       isCollapsed: !state.isCollapsed,
     }));
     if (this.state.isCollapsed == false) {
-      this.setState({ backgroundColor: 'rgba(247,206,62,0.8)' });
+      this.setState({ backgroundColor: 'rgba(247,206,62,0.9)' });
     } else if (this.state.isCollapsed == true) {
       this.setState({ backgroundColor: 'transparent' });
     } else {
@@ -73,6 +73,7 @@ class Header extends React.Component {
           className="button"
           onClick={this.handleClick}
         />
+
         <Navbar.Collapse id="basic-navbar-nav">
           <div style={Styles.navbar}>
             <SectionLinks>
